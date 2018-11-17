@@ -1,0 +1,17 @@
+notests *default:
+  build:
+    target: Vostok.Sys.Metrics.PerfCounters.sln
+    configuration: NoTests
+    tool:
+      name: dotnet
+
+  install:
+    - Vostok.Sys.Metrics.PerfCounters/bin/Release/netstandard2.0/Vostok.Sys.Metrics.PerfCounters.dll
+
+  deps:
+    - vostok.devtools
+
+full-build > notests:
+  build:
+    target: Vostok.Sys.Metrics.PerfCounters.sln
+    configuration: Release
