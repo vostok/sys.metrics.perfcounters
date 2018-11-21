@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   
   <Import Project="..\..\vostok.devtools\library-common-props\Main-Project.props" />
@@ -25,5 +25,17 @@
     <PackageTags>vostok</PackageTags>
     <RepositoryUrl>https://github.com/vostok/sys.metrics.perfcounters</RepositoryUrl>
   </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="PDH\Native" />
+  </ItemGroup>
   
 </Project>
