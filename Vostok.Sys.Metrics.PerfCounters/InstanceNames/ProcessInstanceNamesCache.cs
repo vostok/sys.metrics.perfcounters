@@ -8,11 +8,11 @@ namespace Vostok.Sys.Metrics.PerfCounters.InstanceNames
     {
         public static readonly ProcessInstanceNamesCache Instance = new ProcessInstanceNamesCache();
         private readonly TimeCache<Dictionary<int, string>> dotNetCache = new TimeCache<Dictionary<int, string>>(
-            () => BuildCache(InstanceNameUtility.NetCategories),
+            () => BuildCache(InstanceNameUtility.DotNet),
             () => TimeSpan.FromMilliseconds(500));
 
         private readonly TimeCache<Dictionary<int, string>> globalCache = new TimeCache<Dictionary<int, string>>(
-            () => BuildCache(InstanceNameUtility.ProcessCategory),
+            () => BuildCache(InstanceNameUtility.Process),
             () => TimeSpan.FromMilliseconds(500));
 
         public Func<string> ForPid(int pid, bool forDotNetCounters)

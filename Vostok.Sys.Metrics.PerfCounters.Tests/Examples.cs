@@ -20,7 +20,7 @@ namespace Vostok.Sys.Metrics.PerfCounters.Tests
                 .CreateCounter(
                     "Process",
                     "Working Set - Private",
-                    InstanceNameProviders.ProcessCategory.ForCurrentProcess());
+                    InstanceNameProviders.Process.ForCurrentProcess());
 
             for (var i = 0; i < 3; ++i)
             {

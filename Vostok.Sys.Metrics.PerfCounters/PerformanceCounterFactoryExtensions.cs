@@ -32,7 +32,7 @@ namespace Vostok.Sys.Metrics.PerfCounters
             => factory
                 .Create<double>()
                 .AddCounter("Process", counter, (context, value) => context.Result = value)
-                .Build(InstanceNameProviders.ProcessCategory.ForPid(processId));
+                .Build(InstanceNameProviders.Process.ForPid(processId));
         
         public static IPerformanceCounter<double> CreateDotNetCategoriesCounter(
             this IPerformanceCounterFactory factory,
@@ -42,6 +42,6 @@ namespace Vostok.Sys.Metrics.PerfCounters
             => factory
                 .Create<double>()
                 .AddCounter(category, counter, (context, value) => context.Result = value)
-                .Build(InstanceNameProviders.DotNetCategories.ForPid(processId));
+                .Build(InstanceNameProviders.DotNet.ForPid(processId));
     }
 }

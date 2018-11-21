@@ -4,8 +4,8 @@ namespace Vostok.Sys.Metrics.PerfCounters.InstanceNames
 {
     internal class InstanceNameUtility
     {
-        public static readonly InstanceNameUtility ProcessCategory = new InstanceNameUtility("Process", "ID Process");
-        public static readonly InstanceNameUtility NetCategories = new InstanceNameUtility(".NET CLR Memory", "Process ID");
+        public static readonly InstanceNameUtility Process = new InstanceNameUtility("Process", "ID Process");
+        public static readonly InstanceNameUtility DotNet = new InstanceNameUtility(".NET CLR Memory", "Process ID");
 
         private readonly IPerformanceCounter<Observation<int>[]> processIdPerfCounter;
         private readonly object sync = new object();
@@ -27,6 +27,12 @@ namespace Vostok.Sys.Metrics.PerfCounters.InstanceNames
 
                 return BuildProcessIdToInstanceNameMap(observations);
             }
+        }
+
+        public void EvictCaches()
+        {
+            Process.EvictCaches();
+            DotNet.EvictCaches();
         }
 
         private Dictionary<int, string> BuildProcessIdToInstanceNameMap(in Observation<int>[] observations)
