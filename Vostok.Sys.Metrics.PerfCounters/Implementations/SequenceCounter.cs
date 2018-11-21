@@ -6,7 +6,6 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
 {
     internal class SequenceCounter : IPerformanceCounter<IEnumerable<Observation>>
     {
-        private readonly CounterDescription<None>[] counterNames;
         private readonly CounterDescription<None>[] counters;
         private readonly ArrayHolder arrayHolder = new ArrayHolder();
         private readonly InstancesCounter instancesCounter = new InstancesCounter();
@@ -14,9 +13,9 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
 
         private PdhQueryHandle query;
 
-        public SequenceCounter(CounterDescription<None>[] counterNames)
+        public SequenceCounter(CounterDescription<None>[] counters)
         {
-            this.counterNames = counterNames;
+            this.counters = counters;
         }
 
         public IEnumerable<Observation> Observe()
