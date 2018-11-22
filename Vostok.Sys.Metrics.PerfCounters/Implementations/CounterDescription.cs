@@ -28,8 +28,4 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
             Mode = mode;
         }
     }
-
-    internal struct None
-    {
-    }
 }

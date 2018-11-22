@@ -9,7 +9,6 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
     {
         private readonly string instanceNameWildcard;
         private readonly CounterDescription<T>[] counters;
-
         private readonly Dictionary<(string name, int id), SetCounterValueContext<T>> contexts
             = new Dictionary<(string, int), SetCounterValueContext<T>>();
         private readonly ArrayHolder arrayHolder = new ArrayHolder();
@@ -43,7 +42,7 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
                 if (counter.Mode == CounterReadMode.FormattedValue)
                     counter.PdhCounter.ReadFormattedValues(arrayHolder, instancesCounter, samples, out _);
                 else    
-                    counter.PdhCounter.ReadFormattedValues(arrayHolder, instancesCounter, samples, out _);
+                    counter.PdhCounter.ReadRawValues(arrayHolder, instancesCounter, samples, out _);
 
                 foreach (var sample in samples)
                 {
