@@ -40,7 +40,10 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
                 if (!counter.PdhCounter.IsValid)
                     continue;
 
-                counter.PdhCounter.ReadFormattedValues(arrayHolder, instancesCounter, samples, out _);
+                if (counter.Mode == CounterReadMode.FormattedValue)
+                    counter.PdhCounter.ReadFormattedValues(arrayHolder, instancesCounter, samples, out _);
+                else    
+                    counter.PdhCounter.ReadFormattedValues(arrayHolder, instancesCounter, samples, out _);
 
                 foreach (var sample in samples)
                 {
