@@ -6,7 +6,7 @@ namespace Vostok.Sys.Metrics.PerfCounters
 {
     public interface IPerformanceCounterBuilder<T>
     {
-        IPerformanceCounterBuilder<T> AddCounter(string category, string counter, SetValue<T> setValue, bool rawValue = false);
+        IPerformanceCounterBuilder<T> AddCounter(string category, string counter, SetValue<T> setValue);
 
         IPerformanceCounter<T> Build();
         IPerformanceCounter<T> Build(string instance);

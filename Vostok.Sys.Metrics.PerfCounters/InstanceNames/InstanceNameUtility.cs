@@ -16,7 +16,7 @@ namespace Vostok.Sys.Metrics.PerfCounters.InstanceNames
             => processIdPerfCounter = PerformanceCounterFactory
                 .Default
                 .Create<int>()
-                .AddCounter(category, counter, (context, value) => context.Result = (int) value, true)
+                .AddCounter(category, counter, (context, value) => context.Result = (int) value)
                 .BuildForMultipleInstances("*");
 
         public Dictionary<int, string> ObtainInstanceNames()

@@ -15,8 +15,10 @@ namespace Vostok.Sys.Metrics.PerfCounters.Builder
             this.factory = factory;
         }
 
-        public IPerformanceCounterBuilder<T> AddCounter(string category, string counter, SetValue<T> setValue, bool rawValue = false)
+        public IPerformanceCounterBuilder<T> AddCounter(string category, string counter, SetValue<T> setValue)
         {
+            var rawValue = false; // TODO: optimize some counters by raw value reading
+            
             counters.Add(
                 new CounterDescription<T>
                 {
