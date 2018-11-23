@@ -22,5 +22,5 @@ var counter = PerformanceCounterFactory
 ```cs
 var counter = PerformanceCounterFactory
     .Default
-    .CreateCounter("LogicalDisk", "% Idle Time", InstanceNameProviders.DotNet.ForPid(1234));
+    .CreateCounter(".NET CLR Memory", "Gen 2 Heap Size", InstanceNameProviders.DotNet.ForPid(1234));
 ```
