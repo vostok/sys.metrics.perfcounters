@@ -7,11 +7,11 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
     internal class SingleValuePerformanceCounter<T> : IPerformanceCounter<T>
         where T : new()
     {
-        private readonly string instanceName;
-        private readonly CounterDescription<T>[] counters;
         private readonly SetCounterValueContext<T> context = new SetCounterValueContext<T>();
-        private PdhQueryHandle query;
+        private readonly CounterDescription<T>[] counters;
+        private readonly string instanceName;
         private bool firstObservation = true;
+        private PdhQueryHandle query;
 
         public SingleValuePerformanceCounter(CounterDescription<T>[] counters, string instanceName = null)
         {
@@ -21,6 +21,32 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
 
         public T Observe()
         {
+            try
+            {
+                return RawObserve();
+            }
+            catch (PdhException e)
+            {
+                switch (e.Status)
+                {
+                    case PdhStatus.PDH_CALC_NEGATIVE_VALUE:
+                    case PdhStatus.PDH_CALC_NEGATIVE_TIMEBASE:
+                    case PdhStatus.PDH_CALC_NEGATIVE_DENOMINATOR:
+                        Dispose();
+                        query = null;
+                        firstObservation = true;
+                        return Factory.Create<T>();
+                    default:
+                        throw;
+                }
+            }
+        }
+
+        public void Dispose()
+            => query?.Dispose();
+
+        private T RawObserve()
+        {
             if (query == null || query.IsInvalid)
                 Init();
 
@@ -29,6 +55,7 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
             try
             {
                 context.Result = Factory.Create<T>();
+
                 for (var i = 0; i < counters.Length; ++i)
                 {
                     ref var counter = ref counters[i];
@@ -46,12 +73,10 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
             }
         }
 
-        public void Dispose()
-            => query?.Dispose();
-
         private void Init()
         {
             query = PdhQueryHandle.OpenRealtime();
+
             for (var i = 0; i < counters.Length; ++i)
             {
                 ref var counter = ref counters[i];
