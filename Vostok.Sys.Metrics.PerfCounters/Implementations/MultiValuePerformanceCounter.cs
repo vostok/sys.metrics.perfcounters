@@ -15,7 +15,7 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
         private readonly InstancesCounter instancesCounter = new InstancesCounter();
         private readonly List<Sample> samples = new List<Sample>();
 
-        private PdhQueryHandle query;
+        private volatile PdhQueryHandle query;
 
         public MultiValuePerformanceCounter(CounterDescription<T>[] counters, string instanceNameWildcard)
         {
@@ -71,7 +71,7 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
         }
 
         public void Dispose()
-            => query.Dispose();
+            => query?.Dispose();
 
         private void Init()
         {

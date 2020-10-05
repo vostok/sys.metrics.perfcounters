@@ -13,8 +13,8 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
         private readonly Func<string, IPerformanceCounter<T>> counterFactory;
         private readonly Func<string> instanceNameProvider;
 
-        private IPerformanceCounter<T> counter;
-        private string instanceName;
+        private volatile IPerformanceCounter<T> counter;
+        private volatile string instanceName;
 
         public DynamicPerformanceCounter(Func<string, IPerformanceCounter<T>> counterFactory, Func<string> instanceNameProvider)
         {
