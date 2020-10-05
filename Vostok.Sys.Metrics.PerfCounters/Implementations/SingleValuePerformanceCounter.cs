@@ -10,8 +10,8 @@ namespace Vostok.Sys.Metrics.PerfCounters.Implementations
         private readonly SetCounterValueContext<T> context = new SetCounterValueContext<T>();
         private readonly CounterDescription<T>[] counters;
         private readonly string instanceName;
-        private bool firstObservation = true;
-        private PdhQueryHandle query;
+        private volatile bool firstObservation = true;
+        private volatile PdhQueryHandle query;
 
         public SingleValuePerformanceCounter(CounterDescription<T>[] counters, string instanceName = null)
         {
