@@ -9,6 +9,8 @@ jobs:
   test:
     needs: build
     uses: vostok/github.ci/.github/workflows/test.yml@master
+    with:
+      os: '["windows-latest"]'    
 
   publish:
     needs: test
