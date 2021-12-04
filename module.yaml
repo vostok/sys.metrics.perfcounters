@@ -12,6 +12,10 @@ notests *default:
     - vostok.devtools
 
 full-build > notests:
+  deps:
+    - -vostok.devtools
+    - vostok.devtools@with-net6.0
+
   build:
     target: Vostok.Sys.Metrics.PerfCounters.sln
     configuration: Release
