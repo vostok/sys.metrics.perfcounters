@@ -1,3 +1,7 @@
+## 0.0.5 (06-12-2021):
+
+Added `net6.0` target.
+
 ## 0.0.4 (05-10-2020):
 
 Fixed a potential NRE in Dispose method of MultiValuePerformanceCounter.
