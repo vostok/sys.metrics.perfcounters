@@ -1,0 +1,47 @@
+readonly Vostok.Sys.Metrics.PerfCounters.Observation.Category -> string
+readonly Vostok.Sys.Metrics.PerfCounters.Observation.Counter -> string
+readonly Vostok.Sys.Metrics.PerfCounters.Observation.Id -> int
+readonly Vostok.Sys.Metrics.PerfCounters.Observation.Instance -> string
+readonly Vostok.Sys.Metrics.PerfCounters.Observation.Value -> double
+readonly Vostok.Sys.Metrics.PerfCounters.Observation<T>.Id -> int
+readonly Vostok.Sys.Metrics.PerfCounters.Observation<T>.Instance -> string
+readonly Vostok.Sys.Metrics.PerfCounters.Observation<T>.Value -> T
+static readonly Vostok.Sys.Metrics.PerfCounters.InstanceNames.InstanceNameProviders.DotNet -> Vostok.Sys.Metrics.PerfCounters.InstanceNames.ICategoryProcessInstanceNameProviders
+static readonly Vostok.Sys.Metrics.PerfCounters.InstanceNames.InstanceNameProviders.Process -> Vostok.Sys.Metrics.PerfCounters.InstanceNames.ICategoryProcessInstanceNameProviders
+static Vostok.Sys.Metrics.PerfCounters.PerformanceCounterExtensions.TryObserve<T>(this Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<T> counter, out T value, System.Action<System.Exception> logError = null) -> bool
+static Vostok.Sys.Metrics.PerfCounters.PerformanceCounterFactory.Default -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterFactory
+static Vostok.Sys.Metrics.PerfCounters.PerformanceCounterFactoryExtensions.CreateCounter(this Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterFactory factory, string category, string counter, string instance = null) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<double>
+static Vostok.Sys.Metrics.PerfCounters.PerformanceCounterFactoryExtensions.CreateCounter(this Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterFactory factory, string category, string counter, System.Func<string> instanceNameProvider) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<double>
+static Vostok.Sys.Metrics.PerfCounters.PerformanceCounterFactoryExtensions.CreateDotNetCategoriesCounter(this Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterFactory factory, string category, string counter, int processId) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<double>
+static Vostok.Sys.Metrics.PerfCounters.PerformanceCounterFactoryExtensions.CreateProcessCategoryCounter(this Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterFactory factory, string counter, int processId) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<double>
+Vostok.Sys.Metrics.PerfCounters.InstanceNames.ICategoryProcessInstanceNameProviders
+Vostok.Sys.Metrics.PerfCounters.InstanceNames.ICategoryProcessInstanceNameProviders.ForCurrentProcess() -> System.Func<string>
+Vostok.Sys.Metrics.PerfCounters.InstanceNames.ICategoryProcessInstanceNameProviders.ForPid(int pid) -> System.Func<string>
+Vostok.Sys.Metrics.PerfCounters.InstanceNames.InstanceNameProviders
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<T>
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<T>.Observe() -> T
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder.AddCounter(string category, string counter, string instancesFilter) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder.Build() -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<System.Collections.Generic.IEnumerable<Vostok.Sys.Metrics.PerfCounters.Observation>>
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder<T>
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder<T>.AddCounter(string category, string counter, Vostok.Sys.Metrics.PerfCounters.SetValue<T> setValue) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder<T>
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder<T>.Build() -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<T>
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder<T>.Build(string instance) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<T>
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder<T>.Build(System.Func<string> instanceNameProvider) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<T>
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder<T>.BuildForMultipleInstances(string instancesFilter) -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounter<Vostok.Sys.Metrics.PerfCounters.Observation<T>[]>
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterFactory
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterFactory.Create() -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder
+Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterFactory.Create<T>() -> Vostok.Sys.Metrics.PerfCounters.IPerformanceCounterBuilder<T>
+Vostok.Sys.Metrics.PerfCounters.Observation
+Vostok.Sys.Metrics.PerfCounters.Observation.Observation() -> void
+Vostok.Sys.Metrics.PerfCounters.Observation.Observation(string category, string counter, string instance, int id, double value) -> void
+Vostok.Sys.Metrics.PerfCounters.Observation<T>
+Vostok.Sys.Metrics.PerfCounters.Observation<T>.Observation() -> void
+Vostok.Sys.Metrics.PerfCounters.Observation<T>.Observation(string instance, int id, T value) -> void
+Vostok.Sys.Metrics.PerfCounters.PerformanceCounterExtensions
+Vostok.Sys.Metrics.PerfCounters.PerformanceCounterFactory
+Vostok.Sys.Metrics.PerfCounters.PerformanceCounterFactory.PerformanceCounterFactory() -> void
+Vostok.Sys.Metrics.PerfCounters.PerformanceCounterFactoryExtensions
+Vostok.Sys.Metrics.PerfCounters.SetCounterValueContext<T>
+Vostok.Sys.Metrics.PerfCounters.SetCounterValueContext<T>.Result -> T
+Vostok.Sys.Metrics.PerfCounters.SetValue<T>
