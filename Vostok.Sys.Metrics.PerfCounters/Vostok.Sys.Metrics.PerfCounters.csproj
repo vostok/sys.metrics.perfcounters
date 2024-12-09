@@ -6,7 +6,7 @@
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
   <PropertyGroup>
-    <VersionPrefix>0.0.7</VersionPrefix>
+    <VersionPrefix>0.0.8</VersionPrefix>
   </PropertyGroup>
   <PropertyGroup>
     <Title>Vostok.Sys.Metrics.PerfCounters</Title>
