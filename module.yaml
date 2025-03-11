@@ -7,6 +7,16 @@ notests *default:
 
   install:
     - Vostok.Sys.Metrics.PerfCounters/bin/Release/netstandard2.0/Vostok.Sys.Metrics.PerfCounters.dll
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Sys.Metrics.PerfCounters/bin/Release/netstandard2.0/Vostok.Sys.Metrics.PerfCounters.dll
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Sys.Metrics.PerfCounters/bin/Release/net6.0/Vostok.Sys.Metrics.PerfCounters.dll
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Sys.Metrics.PerfCounters/bin/Release/net8.0/Vostok.Sys.Metrics.PerfCounters.dll
 
   deps:
     - vostok.devtools
@@ -15,6 +25,19 @@ full-build > notests:
   deps:
     - -vostok.devtools
     - vostok.devtools@with-net6.0
+  
+  install:
+    - Vostok.Sys.Metrics.PerfCounters/bin/Release/netstandard2.0/Vostok.Sys.Metrics.PerfCounters.dll
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Sys.Metrics.PerfCounters/bin/Release/netstandard2.0/Vostok.Sys.Metrics.PerfCounters.dll
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Sys.Metrics.PerfCounters/bin/Release/net6.0/Vostok.Sys.Metrics.PerfCounters.dll
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Sys.Metrics.PerfCounters/bin/Release/net8.0/Vostok.Sys.Metrics.PerfCounters.dll
 
   build:
     target: Vostok.Sys.Metrics.PerfCounters.sln
